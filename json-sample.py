@@ -7,11 +7,12 @@ conn = psycopg2.connect(database="jsonb_test", user="maxroach", host="localhost"
 conn.set_session(autocommit=True)
 cur = conn.cursor()
 
-#url = "https://www.reddit.com/r/programming.json"
+url = "https://github.com/zalamgir/tweeter-go-tester-2/blob/master/shakespeare-tweets.json"
 after = {"after": "null"}
 
-for n in range(300):
-    req = requests.get(url, params=after, headers={"User-Agent": "Python"})
+for n in range(11307):
+    req = requests.get(url)
+#    req = requests.get(url, params=after, headers={"User-Agent": "Cockroach"})
 
     resp = req.json()
     after = {"after": str(resp['data']['after'])}
